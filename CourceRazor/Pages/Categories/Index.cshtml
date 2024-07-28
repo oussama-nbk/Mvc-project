@@ -1,0 +1,45 @@
+﻿@page
+@model CourceRazor.Pages.Categories.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row pt-3 pb-3">
+    <div class="col-6">
+        <h1>Category List</h1>
+    </div>
+    <div class="col-6 text-end ">
+        <a asp-page="./Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle-fill"></i>  Add New Category
+        </a>
+    </div>
+</div>
+
+
+<table class="table table-bordered border-primary">
+    <thead>
+        <tr >
+            <th> Id</th>
+            <th>Category Name</th>
+            <th>Display Order</th>
+            <th class="text-center">Operations</th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Category) {
+        <tr>
+                <td>@item.CategoryId</td>
+                <td>@item.Name</td>
+                <td>@item.DisplayOrder</td>
+              
+
+                <td class="d-flex justify-content-center">
+                    <a asp-page="./Edit" asp-route-id="@item.CategoryId" class="btn btn-lg btn-primary  mx-2  ">Edit</a>
+                    <a asp-page="./Details" asp-route-id="@item.CategoryId" class="btn btn-lg btn-info  mx-2">Details</a>
+                    <a asp-page="./Delete" asp-route-id="@item.CategoryId" class="btn btn-lg btn-danger   mx-2">Delete </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
